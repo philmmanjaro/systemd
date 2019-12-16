@@ -1,0 +1,18 @@
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect $ git clone https://github.com/systemd/systemd.git
+Cloning into 'systemd'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (6/6), done.
+remote: Total 291705 (delta 0), reused 3 (delta 0), pack-reused 291699
+Receiving objects: 100% (291705/291705), 122.85 MiB | 21.06 MiB/s, done.
+Resolving deltas: 100% (226645/226645), done.
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect $ cd systemd
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect start
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect good v242
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad v243
+Bisecting: 998 revisions left to test after this (roughly 10 steps)
+[762267cdc117895dd2b50657ebd6ea085a1aff8a] Merge pull request #12762 from yuwata/network-introduce-carrier-and-network-state-12752
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad 762267cdc117895dd2b50657ebd6ea085a1aff8a
+Bisecting: 499 revisions left to test after this (roughly 9 steps)
+[0f20dde52e80c32c408c66ec135b585c6fd10e90] Merge pull request #12602 from keszybz/two-man-page-tweaks
+

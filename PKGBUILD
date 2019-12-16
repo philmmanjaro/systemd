@@ -7,8 +7,8 @@
 pkgbase=systemd
 pkgname=('systemd' 'systemd-libs' 'systemd-resolvconf' 'systemd-sysvcompat')
 # Can be from either systemd or systemd-stable
-_commit='762267cdc117895dd2b50657ebd6ea085a1aff8a'
-pkgver=242.2000
+_commit='0f20dde52e80c32c408c66ec135b585c6fd10e90'
+pkgver=242.501
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -184,7 +184,9 @@ package_systemd() {
   # only in v242
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
-#  rm -rv "$pkgdir"/etc/systemd/system/*
+  if [ -e "$pkgdir"/etc/systemd/system/ ]; then
+      rm -rv "$pkgdir"/etc/systemd/system/*
+  fi
 
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
@@ -202,16 +204,18 @@ package_systemd() {
   # files shipped with systemd-resolvconf
   rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
 
-  # only in v242
-  # avoid a potential conflict with [core]/filesystem
-#  rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
-#  sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
-
-  # only in v243
-  # avoid a potential conflict with [core]/filesystem
-  rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
-  sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
-    -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+  if [ -e "$pkgdir"/usr/share/factory/etc/issue ]; then
+      # only in v243
+      # avoid a potential conflict with [core]/filesystem
+      rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
+      sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
+       -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+  else
+      # only in v242
+      # avoid a potential conflict with [core]/filesystem
+      rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
+      sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+  fi
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
   install -m0644 $pkgbase-stable/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
