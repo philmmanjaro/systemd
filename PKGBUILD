@@ -7,9 +7,9 @@
 pkgbase=systemd
 pkgname=('systemd' 'systemd-libs' 'systemd-resolvconf' 'systemd-sysvcompat')
 # Can be from either systemd or systemd-stable
-_commit='2caf5c905c576dfc542311517820a09f18bd8a77'
-pkgver=242.153
-pkgrel=2
+_commit='1e5d2d656420d0e755dbcf72aeba3c3aba54e956'
+pkgver=242.0
+pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -64,39 +64,6 @@ sha512sums=('SKIP'
             '209b01b044877cc986757fa4009a92ea98f480306c2530075d153203c3cd2b3afccab6aacc1453dee8857991e04270572f1700310705d7a0f4d5bed27fab8c67')
 
 _backports=(
-  # basic/socket-util: put a limit on the loop to flush connections
-  '67962036f6c6cfd34828c1f1f1fbdc0018fb9898'
-
-  # network: logs link state change
-  '0beb9542e90ab1c5d1507a1046a326fbcf73861c'
-
-  # network: drop invalid assertion
-  '51aba17b88617515e037e8985d3a4ea871ac47fe'
-  # network: fix assertion when link get carrier
-  'b9ea3d2e47b3741f3f46ba9c5e19640136933b71'
-
-  # network: do not use ordered_set_printf() for DOMAINS= or ROUTE_DOMAINS=
-  'fe0e16db093a7da09fcb52a2bc7017197047443d'
-
-  # network: honor MTUBytes= setting
-  '933c70a0a4e4fac47d18e0348ae97ee3d48dc139'
-  # network: bump MTU bytes only when MTUByte= is not set
-  'f6fcc1c2a41eae749467de58453174296b635a69'
-
-  # network: do not send ipv6 token to kernel
-  '9f6e82e6eb3b6e73d66d00d1d6eee60691fb702f'
-
-  # cgroup-util: kill also threads
-  'e48fcfef06d81bf08607d3c1657fdc6aa1e9a6ee'
-
-  # https://github.com/systemd/systemd/issues/12315
-  '0beb9542e90ab1c5d1507a1046a326fbcf73861c'
-  'bd08ce56156751d58584a44e766ef61340cdae2d'
-  '5f707e1280d7c66d3adcffd47a23ad446257f355'
-
-  # https://bugs.archlinux.org/task/64629
-  '3cabdc2345608b01e344a52fe6f8c3c378406ebc'
-  '030f4571670537c76355c5d923468c9a61aa77e9'
 )
 
 _reverts=(
