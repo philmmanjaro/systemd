@@ -30,4 +30,7 @@ Bisecting: 31 revisions left to test after this (roughly 5 steps)
 phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad 89aaf65586ea4b0b36b7c3d4661cda35a5fdf7a1
 Bisecting: 12 revisions left to test after this (roughly 4 steps)
 [54f802ff8a7360eade5028cd7592cc0b84c2c848] Merge pull request #12037 from poettering/oom-state
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect good 54f802ff8a7360eade5028cd7592cc0b84c2c848
+Bisecting: 5 revisions left to test after this (roughly 3 steps)
+[aa46c28418c3111df9b9341d8796c16e0d40261c] Merge pull request #12153 from benjarobin/killall-show-not-killed
 
