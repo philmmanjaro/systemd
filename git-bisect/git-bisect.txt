@@ -24,4 +24,7 @@ Bisecting: 124 revisions left to test after this (roughly 7 steps)
 phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad eaa9d507d85509c8bf727356e3884ec54b0fc646
 Bisecting: 60 revisions left to test after this (roughly 6 steps)
 [b51629ad849cac72d4d41481e2082cdfdd0107ab] Merge pull request #12222 from yuwata/macsec
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad b51629ad849cac72d4d41481e2082cdfdd0107ab
+Bisecting: 31 revisions left to test after this (roughly 5 steps)
+[89aaf65586ea4b0b36b7c3d4661cda35a5fdf7a1] fileio: add READ_FULL_FILE_UNHEX flag
 
