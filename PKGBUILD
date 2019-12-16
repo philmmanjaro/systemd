@@ -7,8 +7,8 @@
 pkgbase=systemd
 pkgname=('systemd' 'systemd-libs' 'systemd-resolvconf' 'systemd-sysvcompat')
 # Can be from either systemd or systemd-stable
-_commit='1e5d2d656420d0e755dbcf72aeba3c3aba54e956'
-pkgver=242.0
+_commit='efb536d0cbe2e58f80e501d19999928c75e08f6a'
+pkgver=243.0
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -98,7 +98,7 @@ pkgver() {
   # TODO: Switch to upstream versioning post v243!
 
   local _version _count
-  _version='v242'
+  _version='v243'
   _count="$(git rev-list --count ${_version}..)"
   printf '%s.%s' "${_version#v}" "${_count}"
 }
@@ -184,7 +184,7 @@ package_systemd() {
   # only in v242
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
-  rm -rv "$pkgdir"/etc/systemd/system/*
+#  rm -rv "$pkgdir"/etc/systemd/system/*
 
   # we'll create this on installation
   rmdir "$pkgdir"/var/log/journal/remote
@@ -204,14 +204,14 @@ package_systemd() {
 
   # only in v242
   # avoid a potential conflict with [core]/filesystem
-  rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
-  sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+#  rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
+#  sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # only in v243
   # avoid a potential conflict with [core]/filesystem
-#  rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
-#  sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
-#    -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+  rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
+  sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
+    -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
   install -m0644 $pkgbase-stable/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
