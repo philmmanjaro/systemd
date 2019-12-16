@@ -39,4 +39,18 @@ Bisecting: 3 revisions left to test after this (roughly 2 steps)
 phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad 2c32f4f47d19f274987862acf671ed2ab98f1dff
 Bisecting: 0 revisions left to test after this (roughly 1 step)
 [827156b33098cebcfb78e8afd17970c446394665] shutdown: Bump sysctl kernel.printk log level in order to see info msg
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad 827156b33098cebcfb78e8afd17970c446394665
+Bisecting: 0 revisions left to test after this (roughly 0 steps)
+[a012f9f7cfc50c88cc6e9630be4aaa829789de02] core/killall: Propagate errors and return the number of process left
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect good a012f9f7cfc50c88cc6e9630be4aaa829789de02
+827156b33098cebcfb78e8afd17970c446394665 is the first bad commit
+commit 827156b33098cebcfb78e8afd17970c446394665
+Author: Benjamin Robin <dev@benjarobin.fr>
+Date:   Wed Apr 3 21:00:01 2019 +0200
 
+    shutdown: Bump sysctl kernel.printk log level in order to see info msg
+
+ src/shutdown/shutdown.c | 47 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 47 insertions(+)
+
+https://github.com/systemd/systemd/pull/12153/commits
