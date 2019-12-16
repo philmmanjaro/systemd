@@ -33,4 +33,7 @@ Bisecting: 12 revisions left to test after this (roughly 4 steps)
 phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect good 54f802ff8a7360eade5028cd7592cc0b84c2c848
 Bisecting: 5 revisions left to test after this (roughly 3 steps)
 [aa46c28418c3111df9b9341d8796c16e0d40261c] Merge pull request #12153 from benjarobin/killall-show-not-killed
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad aa46c28418c3111df9b9341d8796c16e0d40261c
+Bisecting: 3 revisions left to test after this (roughly 2 steps)
+[2c32f4f47d19f274987862acf671ed2ab98f1dff] core/killall: Log the process names not killed after 10s
 

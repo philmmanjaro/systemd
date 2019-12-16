@@ -7,8 +7,8 @@
 pkgbase=systemd
 pkgname=('systemd' 'systemd-libs' 'systemd-resolvconf' 'systemd-sysvcompat')
 # Can be from either systemd or systemd-stable
-_commit='aa46c28418c3111df9b9341d8796c16e0d40261c'
-pkgver=242.26
+_commit='2c32f4f47d19f274987862acf671ed2ab98f1dff'
+pkgver=242.3
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -76,7 +76,9 @@ prepare() {
   git remote add -f upstream ../systemd
   # merge the latest stable commit (fast-foward only to make sure
   # the verified tag is in)
-  git merge --ff-only "${_commit}"
+#  git merge --ff-only "${_commit}"
+
+  git checkout "${_commit}"
 
   local _c
   for _c in "${_backports[@]}"; do
