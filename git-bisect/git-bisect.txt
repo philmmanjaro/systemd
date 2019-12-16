@@ -18,5 +18,8 @@ Bisecting: 499 revisions left to test after this (roughly 9 steps)
 phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad 0f20dde52e80c32c408c66ec135b585c6fd10e90
 Bisecting: 250 revisions left to test after this (roughly 8 steps)
 [b6adba159c89b1919c2f21fc42fc6fef3301e696] Merge pull request #12441 from ssahani/bridge-fdb
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad b6adba159c89b1919c2f21fc42fc6fef3301e696
+Bisecting: 124 revisions left to test after this (roughly 7 steps)
+[eaa9d507d85509c8bf727356e3884ec54b0fc646] udev: net_id: introduce predictable names for netdevsim
 
 
