@@ -27,4 +27,7 @@ Bisecting: 60 revisions left to test after this (roughly 6 steps)
 phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad b51629ad849cac72d4d41481e2082cdfdd0107ab
 Bisecting: 31 revisions left to test after this (roughly 5 steps)
 [89aaf65586ea4b0b36b7c3d4661cda35a5fdf7a1] fileio: add READ_FULL_FILE_UNHEX flag
+phil@development ~/dev/git/manjaro/repositories/tmp/systemd/git-bisect/systemd $ git bisect bad 89aaf65586ea4b0b36b7c3d4661cda35a5fdf7a1
+Bisecting: 12 revisions left to test after this (roughly 4 steps)
+[54f802ff8a7360eade5028cd7592cc0b84c2c848] Merge pull request #12037 from poettering/oom-state
 
