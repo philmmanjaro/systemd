@@ -146,9 +146,9 @@ build() {
   ninja -C build
 }
 
-check() {
-  meson test -C build
-}
+#check() {
+#  meson test -C build
+#}
 
 package_systemd() {
   pkgdesc='system and service manager'
