@@ -181,6 +181,7 @@ package_systemd() {
 
   DESTDIR="$pkgdir" meson install -C build
 
+  # only in v242
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
   rm -rv "$pkgdir"/etc/systemd/system/*
@@ -201,9 +202,16 @@ package_systemd() {
   # files shipped with systemd-resolvconf
   rm "$pkgdir"/usr/{bin/resolvconf,share/man/man1/resolvconf.1}
 
+  # only in v242
   # avoid a potential conflict with [core]/filesystem
   rm "$pkgdir"/usr/share/factory/etc/nsswitch.conf
   sed -i '/^C \/etc\/nsswitch\.conf/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
+
+  # only in v243
+  # avoid a potential conflict with [core]/filesystem
+#  rm "$pkgdir"/usr/share/factory/etc/{issue,nsswitch.conf}
+#  sed -i -e '/^C \/etc\/nsswitch\.conf/d' \
+#    -e '/^C \/etc\/issue/d' "$pkgdir"/usr/lib/tmpfiles.d/etc.conf
 
   # add back tmpfiles.d/legacy.conf, normally omitted without sysv-compat
   install -m0644 $pkgbase-stable/tmpfiles.d/legacy.conf "$pkgdir"/usr/lib/tmpfiles.d
