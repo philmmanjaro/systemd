@@ -7,8 +7,8 @@
 pkgbase=systemd
 pkgname=('systemd' 'systemd-libs' 'systemd-resolvconf' 'systemd-sysvcompat')
 # Can be from either systemd or systemd-stable
-_commit='2c32f4f47d19f274987862acf671ed2ab98f1dff'
-pkgver=242.3
+_commit='827156b33098cebcfb78e8afd17970c446394665'
+pkgver=242.2
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
